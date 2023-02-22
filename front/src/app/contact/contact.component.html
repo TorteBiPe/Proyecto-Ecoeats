@@ -1,0 +1,53 @@
+<div class="container mt-5">
+  <h2>Formulario de contacto</h2>
+  <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
+    <div class="form-group">
+      <label>Nombre</label>
+      <input type="text" class="form-control" name="name" required minlength="4" [(ngModel)]="contact.name"
+        #name="ngModel" />
+
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+        <div class="text-danger" *ngIf="name.errors?.['required']">
+          Nombre es obligatorio.
+        </div>
+        <div class="text-danger" *ngIf="name.errors?.['minlength']">
+          Nombre tiene que tener mas de 4 letras
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Asunto</label>
+      <input type="text" class="form-control" name="asunto" required [(ngModel)]="contact.asunto" #asunto="ngModel" />
+
+      <div *ngIf="asunto.invalid && (asunto.dirty || asunto.touched)" class="alert">
+        <div class="text-danger" *ngIf="asunto.errors?.['required']">
+          Asunto es obligatorio.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>E-mail</label>
+      <input type="email" class="form-control" name="email" required [(ngModel)]="contact.email" #email="ngModel"
+        email />
+
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert">
+        <div class="text-danger" *ngIf="email.errors?.['required']">
+          E-mail es obligatorio.
+        </div>
+        <div class="text-danger" *ngIf="email.errors?.['email']">
+          Formato del email erroneo (Ejemplo tuemail@gmail.com)
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Mensaje</label>
+      <textarea class="form-control" cols="30" rows="6" name="messages" ngModel #messages="ngModel" required></textarea>
+    </div>
+    <div *ngIf="messages.invalid && (messages.dirty || messages.touched)" class="alert">
+      <div class="text-danger" *ngIf="messages.errors?.['required']">
+        Mensaje es obligatorio.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!contactForm.form.valid">Enviar</button>
+  </form>
+</div>

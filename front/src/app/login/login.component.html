@@ -1,0 +1,39 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<ul class="alert alert-danger" *ngIf="errores&&errores.length!=0">
+  <li *ngFor="let err of errores">
+    {{err}}
+  </li>
+</ul>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="https://tourismstandrews.co.uk/wp-content/uploads/ecoeats-logo-2-green-600x600.png" id="icon" alt="User Icon" />
+    </div>
+    <!-- Login Form -->
+    <form #loginForm="ngForm">
+      <input type="text" [(ngModel)]="user.login" #username="ngModel" id="login" class="fadeIn second" id="inputuser" name="login"
+        placeholder="Usuario" required>
+      <div class="alert alert-danger" *ngIf="username.invalid && (username.dirty || username.touched)">
+        <div *ngIf="username.errors?.['required']">
+          Usuario es requerido
+        </div>
+      </div>
+      <input type="password" [(ngModel)]="user.password" #password="ngModel" id="password" class="fadeIn third"
+        name="login" placeholder="Contraseña" required>
+      <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+        <div *ngIf="password.errors?.['required']">
+          Contraseña es requerido
+        </div>
+      </div>
+      <input type="submit" class="fadeIn fourth" (click)="login()" value="Iniciar sesión"
+        [disabled]="!loginForm.form.valid">
+    </form>
+
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<button *ngIf="logeo"><a href="product">Products Admin</a></button>
+<section id="products">
+  <div id="productcard" *ngFor="let product of products">
+    <img [src]="product.urlimage" id="imgcard" alt="" />
+    <h3 [textContent]="product.name"></h3>
+    <h4 [textContent]="product.price+'€'"></h4>
+    <button type="button">Comprar</button>
+  </div>
+</section>

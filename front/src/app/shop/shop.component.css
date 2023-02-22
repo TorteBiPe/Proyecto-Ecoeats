@@ -1,0 +1,23 @@
+#products {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: 200px 200px 200px ;
+    grid-template-rows: 400px 400px 400px ;
+    justify-content:space-around;
+    padding-bottom: 10em;
+}
+
+#productcard {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    border: 1px solid black;
+
+}
+#productcard h3{
+    font-size: large;
+}
+#productcard h4{
+    font-size: large;
+}
+
